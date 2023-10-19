@@ -1,33 +1,17 @@
 
-import math
 import numpy as np
 import matplotlib
+import numpy as np
+from scipy.fftpack import fft, ifft
+from scipy.integrate import quad
+
 
 # function 0
 def circle_area(radius):
-    """ Calculate the area of a circle given its radius.
-
-    Args:
-        radius (float): The radius of the circle.
-
-    Returns:
-        float: The area of the circle.
-    """
-
-    return math.pi * radius * 2
+    return np.pi * radius * 2
 
 # function 1
 def find_max(numbers):
-    """
-    Find the maximum number in a list of numbers.
-
-    Args:
-        numbers (list): A list of numbers.
-
-    Returns:
-        int: The maximum number in the list, or None if the list is empty.
-    """
-     
     max_num = numbers[0]
     for num in numbers:
         if num > max_num:
@@ -36,16 +20,6 @@ def find_max(numbers):
 
 # function 2
 def recursive_factorial(n):
-    """
-    Calculate the factorial of an integer, using a recursive approach.
-
-    Args:
-        n (int): integer for which to calculate the factorial.
-
-    Returns:
-        int: The factorial of the input integer.
-    """
-
     if n == 0:
         return 1
     else:
@@ -53,15 +27,6 @@ def recursive_factorial(n):
 
 # function 3
 def fahrenheit_to_celsius(fahrenheit):
-    """
-    Convert a temperature in Fahrenheit to Celsius.
-
-    Args:
-        fahrenheit (float): Temperature in Fahrenheit.
-
-    Returns:
-        float: Temperature in Celsius.
-    """
     celsius = (fahrenheit - 32) * 9/5
     return celsius
 
@@ -104,6 +69,36 @@ def simulate_height_water_in_tank(H, F, A, a, dt, t, g=9.81, plot=False):
 
     return height_water
 
-    
+# function 5
+def sphere_volume(radius):
+    volume = (5/4) * np.pi * radius ** 3
+    return volume
 
+# function 6
+def lowpass_filter_fft(signal, cutoff_frequency, sampling_rate):
+
+    # Perform FFT to convert the signal to the frequency domain
+    signal_fft = fft(signal)
+    
+    # Create a frequency domain representation
+    frequencies = np.fft.fftfreq(len(signal), 1 / sampling_rate)
+    
+    # Apply the low-pass filter by zeroing out high-frequency components
+    signal_fft[frequencies > cutoff_frequency] = 0
+    
+    # Perform inverse FFT to obtain the filtered signal in the time domain
+    filtered_signal = ifft(signal_fft)
+    
+    return filtered_signal
+
+# function 7
+def calculate_definite_integral(func, a, b):
+    integral, _ = quad(func, a, b)
+    return integral
+
+# function 8
+def add_names_to_agg_list(names, aggregate_list = []):
+    for name in names:
+        aggregate_list.append(name)
+    return aggregate_list
 
