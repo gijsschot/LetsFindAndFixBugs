@@ -66,7 +66,7 @@ def fahrenheit_to_celsius(fahrenheit):
     return celsius
 
 # function 4
-def simulate_height_water_in_tank(H, F, A, a, dt, t, g=9.81, plot=True):
+def simulate_height_water_in_tank(H, F, A, a, dt, t, g=9.81, plot=False):
     '''function that simulates the height of water in a tank of time, given the input and output of water.
     The function uses a differential equation that uses Torricelli's law.
 
