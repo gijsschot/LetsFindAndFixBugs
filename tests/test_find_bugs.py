@@ -1,7 +1,6 @@
 import unittest
 import numpy as np
 
-
 def magic_function(a, b):
     """ magic function that divides a by b.
 
