@@ -8,15 +8,17 @@ def magic_function(a, b):
     :param float b: denumerator of division
     :return: a/b
     """
-
+    if b == 0:
+        return np.inf
+    
     return a / b
 
 class TestMagicFunction(unittest.TestCase):
     def test_function(self):
         """Test for magic_function. It tests 5 cases."""
-        
+
         for a, b, answer in ((1, 1, 1), (2, 1, 2), (1, 3, 0.3333333), (-2, 1, -2), (2, 0, np.inf)):
-            self.assertEqual(magic_function(a, b), answer,
+            self.assertAlmostEqual(magic_function(a, b), answer, places=4,
                              msg=f"division of {a} by {b} does not equal {answer}.")
 
 
