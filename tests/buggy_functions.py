@@ -8,7 +8,7 @@ from scipy.integrate import quad
 
 # function 0
 def circle_area(radius):
-    return np.pi * radius * 2
+    return np.pi * radius ** 2
 
 # function 1
 def find_max(numbers):
